@@ -18,6 +18,7 @@ class financeController extends AdminController
     //创建向导首页
     public function index()
     {
+		//$this->
         $this->display();
     }
 }
