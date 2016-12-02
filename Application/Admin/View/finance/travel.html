@@ -1,10 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<extend name="Public/base"/>
 
-</body>
-</html>
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu"/>
+</block>
+
+<block name="body">
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-title cf">
+        <h2>
+            新增
+        </h2>
+    </div>
+    <!-- 标签页导航 -->
+    <div class="tab-wrap">
+
+        <div class="tab-content">
+            <!-- 表单 -->
+            <form id="form" action="{:U('staff/staff_add')}" method="post" class="form-horizontal">
+                <!-- 基础文档模型 -->
+                <div class="form-item">
+                    <label class="item-label">员工名称<span class="check-tips"></span></label>
+                    <div class="controls">
+                        <input type="text" class="text input-large"  name="admin_user"  value="">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <label class="item-label">密码<span class="check-tips"></span></label>
+                    <div class="controls">
+                        <input type="password" class="text input-large" name="admin_pwd"  value="">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <label class="item-label">分类<span class="check-tips"></span></label>
+                    <div class="controls">
+                        <input type="text" class="text input-large" name="type"  value="">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <label class="item-label">手机号<span class="check-tips"></span></label>
+                    <div class="controls">
+                        <input type="text" class="text input-large" name="c_phone"  value="">
+                    </div>
+                </div>
+                <div class="form-item">
+                    <label class="item-label">工号<span class="check-tips"></span></label>
+                    <div class="controls">
+                        <input type="text" class="text input-large" name="job_number"  value="">
+                    </div>
+                </div>
+                <div class="form-item cf">
+                    <button class="btn submit-btn ajax-post hidden" id="submit" type="submit"
+                            target-form="form-horizontal">确 定
+                    </button>
+                    <a class="btn btn-return" href="{:U('article/index?cate_id='.$cate_id)}">返 回</a>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+    <php>if(C('COLOR_STYLE')=='blue_color') echo '
+        <link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">
+        ';
+    </php>
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"
+            charset="UTF-8"></script>
+    <script type="text/javascript">
+
+        $('#submit').click(function () {
+            $('#form').submit();
+        });
+
+    </script>
+</block>

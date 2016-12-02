@@ -1,0 +1,57 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <!-- 标题栏 -->
+    <div class="main-title">
+        <h2>员工列表</h2>
+    </div>
+    <div class="cf">
+        <a class="btn" href="{:U('Staff/staff_add')}">新 增</a>
+    </div>
+
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+        <table>
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>客户名称</th>
+                <th>分类</th>
+                <th>手机</th>
+                <th>权限</th>
+                <th>工单号</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.admin_user}</td>
+                    <td>{$vo.type}</td>
+                    <td>{$vo.c_phone}</td>
+                    <td><eq name="vo.preview" value="1">普通<else/>管理员</eq></td>
+                    <td>{$vo.job_number}</td>
+
+                    <td>
+                        <a title="编辑" href="{:U('staff/staff_edit',array('id'=>$vo['id']))}">编辑</a>
+                        <a class="confirm ajax-get" title="删除" href="{:U('staff/staff_del',array('id'=>$vo.id))}">删除</a>
+                    </td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <!-- 分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        $(function(){
+
+        })
+    </script>
+</block>
